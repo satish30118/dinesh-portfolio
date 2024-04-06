@@ -1,0 +1,69 @@
+body {
+    background-color: lightgray;
+    font-family: "Roboto Slab", serif;
+    /* font-family: "Poppins", sans-serif; */
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    /* color: rgb(67, 64, 64); */
+}
+
+.header-img {
+    width: 100%;
+    margin: 0;
+    padding: 0%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 10px solid rgb(190, 8, 168);
+}
+
+.header-img h1 {
+    position: absolute;
+    /* top: 15vh;
+    z-index: 40000; */
+    color: white;
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    height: 45vh;
+}
+
+.header-img img {
+    width: 100%;
+    height: 45vh;
+}
+
+.content-box {
+    width: 100%;
+    max-width: 1300px;
+    padding: 50px 20px;
+    background-color: lightgray;
+    display: flex;
+    min-height: 55vh;
+    justify-content: center;
+    margin: 0px auto;
+    font-size: 20px;
+
+}
+
+.content-box img {
+    width: 30%;
+    margin-right: 30px;
+    height: 500px;
+}
+
+/* Academics */
+.acad-heading {
+    position: relative;
+}
+
+.acad-timeline {
+    position: absolute;
+    right: 10px;
+}
