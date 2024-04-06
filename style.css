@@ -42,7 +42,7 @@ body {
 .content-box {
     width: 100%;
     max-width: 1300px;
-    padding: 50px 20px;
+    padding: 50px 9px;
     background-color: lightgray;
     display: flex;
     min-height: 55vh;
@@ -66,4 +66,34 @@ body {
 .acad-timeline {
     position: absolute;
     right: 10px;
+}
+
+@media only screen and (max-width:800px){
+    .header-img img{
+        height: 35vh;
+    }
+    .header-overlay{
+        height: 35vh;
+    }
+    .content-box{
+        flex-direction: column;
+    }
+    .content-box img{
+        width: 96%;
+        height: auto;
+        max-width: 400px;
+        margin: 0px auto;
+        margin-bottom: 30px;
+    }
+    .acad-timeline{
+        display: none;
+    }
+}
+@media only screen and (max-width:500px){
+    .header-img img{
+        height: 30vh;
+    }
+    .header-overlay{
+        height: 30vh;
+    }
 }
