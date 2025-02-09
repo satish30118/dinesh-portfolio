@@ -12,6 +12,8 @@ export default function AdminAchievements() {
   const [formData, setFormData] = useState({ title: "" });
   const [editId, setEditId] = useState(null);
   const [loader, setLoader] = useState(false)
+  const [btnLoader, setBtnLoader] = useState(false)
+
 
 
   useEffect(() => {
@@ -24,7 +26,7 @@ export default function AdminAchievements() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setBtnLoader(true)
     if (editId) {
       await axiosInstance.put(`/achievements/${editId}`, formData);
       setEditId(null);
@@ -36,6 +38,7 @@ export default function AdminAchievements() {
 
     axiosInstance.get("/achievements").then((res) => setAchievements(res.data));
     setFormData({ title: "" });
+    setBtnLoader(false)
   };
 
   const handleDelete = async (id) => {
@@ -74,7 +77,7 @@ export default function AdminAchievements() {
           onChange={(e) => setFormData({ title: e.target.value })}
           required
         />
-        <button type="submit">{editId ? "Update" : "Add"} Achievement</button>
+        <button type="submit" disabled={btnLoader}>{btnLoader ? <DotLoader /> : editId ? "Update Achievement" : "Add Achievement"} </button>
       </form>
 
       {/* List of Achievements */}

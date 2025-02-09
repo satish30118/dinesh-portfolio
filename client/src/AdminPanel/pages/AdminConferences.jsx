@@ -12,6 +12,8 @@ export default function AdminConferences() {
   const [formData, setFormData] = useState({ title: "", description: "" });
   const [editId, setEditId] = useState(null);
   const [loader, setLoader] = useState(false)
+  const [btnLoader, setBtnLoader] = useState(false)
+
 
 
   useEffect(() => {
@@ -24,7 +26,7 @@ export default function AdminConferences() {
   }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setBtnLoader(true)
     if (editId) {
       await axiosInstance.put(`/conferences/${editId}`, formData);
       setEditId(null);
@@ -37,6 +39,7 @@ export default function AdminConferences() {
 
     axiosInstance.get("/conferences").then((res) => setConferences(res.data));
     setFormData({ title: "", description: "" });
+    setBtnLoader(false)
   };
 
   const handleDelete = async (id) => {
@@ -81,7 +84,7 @@ export default function AdminConferences() {
           onChange={(e) => setFormData({ ...formData, description: e.target.value })}
           required
         />
-        <button type="submit">{editId ? "Update" : "Add"} Conference</button>
+        <button type="submit">{btnLoader ? <DotLoader /> : editId ? "Update Conference" : "Add Conference"} </button>
       </form>
 
       {/* List of Conferences */}

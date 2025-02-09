@@ -10,6 +10,9 @@ export default function AdminProfile() {
   const [profile, setProfile] = useState({ name: "", email: "" });
   const [passwordData, setPasswordData] = useState({ oldPassword: "", newPassword: "" });
   const [loader, setLoader] = useState(false)
+  const [btn1Loader, setBtn1Loader] = useState(false)
+  const [btn2Loader, setBtn2Loader] = useState(false)
+
 
 
   useEffect(() => {
@@ -21,10 +24,13 @@ export default function AdminProfile() {
 
   const handleProfileUpdate = async () => {
     try {
+      setBtn1Loader(true)
       await axiosInstance.put("/admin/profile", profile, { withCredentials: true });
       toast.success("Profile updated successfully!");
+      setBtn1Loader(false)
     } catch (error) {
       toast.error("Profile update failed!");
+      setBtn1Loader(false)
     }
   };
 
@@ -33,11 +39,14 @@ export default function AdminProfile() {
     if (!passwordData.oldPassword || !passwordData.newPassword) return toast.warn("Fill all fields!");
 
     try {
+      setBtn2Loader(true)
       await axiosInstance.put("/admin/change-password", passwordData, { withCredentials: true });
       toast.success("Password changed successfully!");
       setPasswordData({ oldPassword: "", newPassword: "" });
+      setBtn2Loader(false)
     } catch (error) {
       toast.error("Current password not matched!");
+      setBtn2Loader(false)
     }
   };
 
@@ -54,7 +63,8 @@ export default function AdminProfile() {
         <input type="email" value={profile.email} disabled />
 
         <button onClick={handleProfileUpdate} className="btn-save">
-          <FaSave /> Save Profile
+          {btn1Loader ? <DotLoader /> : <><FaSave /> Save Profile</>}
+
         </button>
       </div>}
 
@@ -77,7 +87,8 @@ export default function AdminProfile() {
             required
           />
           <button type="submit" className="btn-change">
-            <FaKey /> Change Password
+            {btn2Loader ? <DotLoader /> : <> <FaKey /> Change Password</>}
+
           </button>
         </form>
       </div>

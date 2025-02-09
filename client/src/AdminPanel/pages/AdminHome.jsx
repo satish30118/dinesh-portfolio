@@ -11,6 +11,7 @@ export default function AdminHome() {
   const [homeData, setHomeData] = useState({ image: "", about: "" });
   const [imagePreview, setImagePreview] = useState("");
   const [loader, setLoader] = useState(false)
+  const [btnLoader, setBtnLoader] = useState(false)
 
 
   useEffect(() => {
@@ -30,12 +31,17 @@ export default function AdminHome() {
     formData.append("image", file);
 
     try {
+      setBtnLoader(true)
       const res = await axiosInstance.post("/upload", formData);
       setHomeData({ ...homeData, image: res.data.imageUrl });
       setImagePreview(res.data.imageUrl);
       toast.success("Image uploaded successfully!");
+      setBtnLoader(false)
+
     } catch (err) {
       toast.error("Image upload failed!");
+      setBtnLoader(false)
+
     }
   };
 
@@ -68,7 +74,7 @@ export default function AdminHome() {
         </div>
 
         <button onClick={handleUpdate} className="btn-save">
-          <FaSave /> Update Home
+          {btnLoader ? <DotLoader /> : <><FaSave /> Update Home</>}
         </button></>}
     </div>
   );

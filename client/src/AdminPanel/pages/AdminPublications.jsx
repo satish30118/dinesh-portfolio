@@ -12,6 +12,8 @@ export default function AdminPublications() {
   const [formData, setFormData] = useState({ title: "", authors: "", journal: "", link: "" });
   const [editId, setEditId] = useState(null);
   const [loader, setLoader] = useState(false)
+  const [btnLoader, setBtnLoader] = useState(false)
+
 
 
   useEffect(() => {
@@ -23,7 +25,7 @@ export default function AdminPublications() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setBtnLoader(true)
     if (editId) {
       await axiosInstance.put(`/publications/${editId}`, formData);
       setEditId(null);
@@ -35,6 +37,7 @@ export default function AdminPublications() {
 
     axiosInstance.get("/publications").then((res) => setPublications(res.data));
     setFormData({ title: "", authors: "", journal: "", link: "" });
+    setBtnLoader(false)
   };
 
   const handleDelete = async (id) => {
@@ -94,7 +97,7 @@ export default function AdminPublications() {
           onChange={(e) => setFormData({ ...formData, link: e.target.value })}
           required
         />
-        <button type="submit">{editId ? "Update" : "Add"} Publication</button>
+        <button type="submit">{btnLoader ? <DotLoader /> : editId ? "Update Publication" : "Add Publication"} </button>
       </form>
 
       {/* List of Publications */}

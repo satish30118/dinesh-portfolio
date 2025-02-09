@@ -12,6 +12,8 @@ export default function AdminAcademics() {
   const [formData, setFormData] = useState({ degree: "", timeline: "", institute: "", cgpa: "" });
   const [editId, setEditId] = useState(null);
   const [loader, setLoader] = useState(false)
+  const [btnLoader, setBtnLoader] = useState(false)
+
 
   useEffect(() => {
     setLoader(true)
@@ -23,7 +25,7 @@ export default function AdminAcademics() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setBtnLoader(true)
     if (editId) {
       await axiosInstance.put(`/academics/${editId}`, formData);
       setEditId(null);
@@ -35,6 +37,7 @@ export default function AdminAcademics() {
 
     axiosInstance.get("/academics").then((res) => setAcademics(res.data));
     setFormData({ degree: "", timeline: "", institute: "", cgpa: "" });
+    setBtnLoader(false)
   };
 
   const handleDelete = async (id) => {
@@ -70,7 +73,7 @@ export default function AdminAcademics() {
         <input type="text" placeholder="Timeline" value={formData.timeline} onChange={(e) => setFormData({ ...formData, timeline: e.target.value })} required />
         <input type="text" placeholder="Institute Name" value={formData.institute} onChange={(e) => setFormData({ ...formData, institute: e.target.value })} required />
         <input type="text" placeholder="CGPA" value={formData.cgpa} onChange={(e) => setFormData({ ...formData, cgpa: e.target.value })} required />
-        <button type="submit">{editId ? "Update" : "Add"} Degree</button>
+        <button type="submit" disabled={btnLoader}>{btnLoader ? <DotLoader /> : editId ? "Update Degree" : "Add Degree"} </button>
       </form>
 
       {/* List of Academics */}

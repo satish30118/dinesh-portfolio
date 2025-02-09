@@ -12,7 +12,7 @@ export default function AdminGallery() {
   const [images, setImages] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
   const [loader, setLoader] = useState(false)
-
+  const [btnLoader, setBtnLoader] = useState(false)
 
 
   useEffect(() => {
@@ -34,14 +34,17 @@ export default function AdminGallery() {
     formData.append("image", selectedFile);
 
     try {
+      setBtnLoader(true)
       const res = await axiosInstance.post("/upload", formData);
       await axiosInstance.post("/gallery", { imageUrl: res.data.imageUrl });
 
       axiosInstance.get("/gallery").then((res) => setImages(res.data));
       setSelectedFile(null);
       toast.success("Image uploaded successfully!");
+      setBtnLoader(false)
     } catch (err) {
       toast.error("Image upload failed!");
+      setBtnLoader(false)
     }
   };
 
@@ -70,7 +73,7 @@ export default function AdminGallery() {
 
       {/* Upload Image */}
       <input type="file" accept="image/*" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Upload Image</button>
+      <button onClick={handleUpload}>{btnLoader ? <DotLoader /> : "Upload Image"}</button>
 
       {/* Display Images */}
       {loader ? <DotLoader /> : <div className="gallery-grid">
