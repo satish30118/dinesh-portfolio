@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./Components/Navbar";
-import Publication from "./pages/publication";
-import Academics from "./pages/academics";
-import Gallery from "./pages/gallery";
-import Achievement from "./pages/achievement";
-import Conference from "./pages/conference";
+import Publication from "./pages/Publication";
+import Academics from "./pages/Academics";
+import Gallery from "./pages/Gallery";
+import Achievement from "./pages/Achievement"
+import Conference from "./pages/Conference";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./AdminPanel/pages/AdminDashboard";
 import AdminHome from "./AdminPanel/pages/AdminHome";
