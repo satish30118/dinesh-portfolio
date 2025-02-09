@@ -12,7 +12,7 @@ import AdminGallery from "./AdminPanel/pages/AdminGallery";
 import AdminProfile from "./AdminPanel/pages/AdminProfile";
 import AdminStats from "./AdminPanel/pages/AdminStats";
 import NotFound from "./utils/NotFound/NotFound";
-import Academics from "./pages/Academics.jsx";
+import Academics from "./pages/Academics";
 import Achievement from "./pages/Achievement";
 import Conference from "./pages/Conference";
 import Gallery from "./pages/Gallery";
