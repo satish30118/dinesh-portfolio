@@ -23,7 +23,7 @@ app.use(
 );
 app.use(express.json());
 // Serve Static Images
-app.use("/uploads", express.static("uploads"));
+app.use("/api/uploads", express.static("uploads"));
 
 
 // API Routes

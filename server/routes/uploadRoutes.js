@@ -30,7 +30,7 @@ router.post("/", upload.single("image"), (req, res) => {
   }
 
   // Generate Image URL
-  const imageUrl = `${req.protocol}://${req.get("host")}/uploads/${req.file.filename}`;
+  const imageUrl = `/uploads/${req.file.filename}`;
 
   res.json({ imageUrl });
 });

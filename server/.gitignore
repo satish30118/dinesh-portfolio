@@ -18,7 +18,3 @@ lerna-debug.log*
 .vscode/
 .idea/
 .DS_Store
-
-# Ignore environment variables
-.env
-/.env
