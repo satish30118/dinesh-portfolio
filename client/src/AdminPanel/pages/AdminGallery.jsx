@@ -5,6 +5,7 @@ import "../style/admingallery.css";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import axiosInstance from "../../utils/axiosInstance";
+const baseURL = import.meta.env.VITE_APP_BASE_URL || "http://localhost:5000/api";
 
 export default function AdminGallery() {
   const [images, setImages] = useState([]);
@@ -69,7 +70,7 @@ export default function AdminGallery() {
       <div className="gallery-grid">
         {images.map((img) => (
           <div key={img._id} className="gallery-item">
-            <img src={img.imageUrl} alt="Gallery" loading="lazy" />
+            <img src={baseURL+img.imageUrl} alt="Gallery" loading="lazy" />
             <button onClick={() => handleDelete(img._id)} id="btn-delete"><FaTrash className="icon" /></button>
           </div>
         ))}

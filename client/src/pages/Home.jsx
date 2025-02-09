@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../style/home.css"; // Import CSS file
 import axiosInstance from "../utils/axiosInstance";
 import Spinner from "../utils/loader/Spinner";
+const baseURL = import.meta.env.VITE_APP_BASE_URL || "http://localhost:5000/api";
 
 export default function Home() {
   const [homeData, setHomeData] = useState({ image: "", about: "" });
@@ -11,9 +12,8 @@ export default function Home() {
     setLoader(true)
     axiosInstance.get("/home").then((res) => {
       setHomeData(res.data);
-      setLoader(false)
     });
-    
+    setLoader(false)
 
   }, []);
   return (
@@ -29,7 +29,7 @@ export default function Home() {
       </header>
       {loader ? <Spinner /> : <section className="home-content">
         <div className="image-box">
-          <img src={homeData?.image} alt="Dinesh Patel" loading="lazy" />
+          <img src={baseURL + homeData?.image} alt="Dinesh Patel" loading="lazy" />
         </div>
         <div className="text-box">
           {/* <p>

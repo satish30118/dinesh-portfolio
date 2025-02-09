@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { FaSave } from "react-icons/fa"; // Save Icon
 import "../style/adminhome.css"; // Import Styles
 import axiosInstance from "../../utils/axiosInstance";
+const baseURL = import.meta.env.VITE_APP_BASE_URL || "http://localhost:5000/api";
 
 export default function AdminHome() {
   const [homeData, setHomeData] = useState({ image: "", about: "" });
@@ -47,7 +48,7 @@ export default function AdminHome() {
       <div className="image-box">
         <label>Upload Home Image:</label>
         <input type="file" accept="image/*" onChange={handleImageUpload} />
-        {imagePreview && <img src={imagePreview} alt="Preview" className="preview-img" />}
+        {imagePreview && <img src={baseURL+imagePreview} alt="Preview" className="preview-img" />}
       </div>
       <br />
       {/* About Text */}

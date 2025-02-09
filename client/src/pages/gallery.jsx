@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../style/gallery.css";
 import axiosInstance from "../utils/axiosInstance";
 import Spinner from "../utils/loader/Spinner";
+const baseURL = import.meta.env.VITE_APP_BASE_URL || "http://localhost:5000/api";
 
 // const images = [
 //   "../assets/gallery/g3.jpeg",
@@ -17,9 +18,9 @@ export default function Gallery() {
   useEffect(() => {
     setLoader(true)
     axiosInstance.get("/gallery")
-      .then((res) =>{ setImages(res.data);  setLoader(false)})
-      .catch(() => {toast.error("Error fetching images!");  setLoader(false)});
-  
+      .then((res) => setImages(res.data))
+      .catch(() => toast.error("Error fetching images!"));
+    setLoader(false)
 
   }, []);
   return (
@@ -35,7 +36,7 @@ export default function Gallery() {
       {loader ? <Spinner /> : <section className="gallery-grid">
         {images.map((src, index) => (
           <div key={index} className="gallery-item">
-            <img src={src?.imageUrl} alt={`Gallery Image ${index + 1}`} loading="lazy" />
+            <img src={baseURL+src?.imageUrl} alt={`Gallery Image ${index + 1}`} loading="lazy" />
           </div>
         ))}
       </section>}

@@ -4,7 +4,7 @@ import {
   FaHome, FaUserGraduate, FaTrophy, FaBook, FaUsers, FaImages,
   FaUser, FaSignOutAlt, FaChartBar, FaBars
 } from "react-icons/fa";
-import "./Sidebar.css";
+import "./sidebar.css";
 import axiosInstance from "../../utils/axiosInstance";
 import { toast } from "react-toastify";
 
