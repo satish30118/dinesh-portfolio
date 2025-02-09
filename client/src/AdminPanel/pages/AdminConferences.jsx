@@ -21,7 +21,6 @@ export default function AdminConferences() {
     axiosInstance.get("/conferences")
       .then((res) => { setConferences(res.data); setLoader(false) })
       .catch(() => { toast.error("Error fetching conferences!"); setLoader(false) });
-    setLoader(false)
 
   }, []);
   const handleSubmit = async (e) => {
