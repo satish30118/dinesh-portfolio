@@ -14,6 +14,7 @@ import AdminAchievements from "./AdminPanel/pages/AdminAchievements";
 import AdminPublications from "./AdminPanel/pages/AdminPublications";
 import AdminConferences from "./AdminPanel/pages/AdminConferences";
 import AdminGallery from "./AdminPanel/pages/AdminGallery"; 
+
 import AdminProfile from "./AdminPanel/pages/AdminProfile";
 import AdminStats from "./AdminPanel/pages/AdminStats";
 import NotFound from "./utils/NotFound/NotFound";
