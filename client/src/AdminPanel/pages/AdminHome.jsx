@@ -4,17 +4,22 @@ import { toast } from "react-toastify";
 import { FaSave } from "react-icons/fa"; // Save Icon
 import "../style/adminhome.css"; // Import Styles
 import axiosInstance from "../../utils/axiosInstance";
+import DotLoader from "../../utils/loader/DotLoader";
 const baseURL = import.meta.env.VITE_APP_BASE_URL || "http://localhost:5000/api";
 
 export default function AdminHome() {
   const [homeData, setHomeData] = useState({ image: "", about: "" });
   const [imagePreview, setImagePreview] = useState("");
+  const [loader, setLoader] = useState(false)
+
 
   useEffect(() => {
+    setLoader(true)
     axiosInstance.get("/home").then((res) => {
       setHomeData(res.data);
       setImagePreview(res.data.image);
     });
+    setLoader(false)
   }, []);
 
   const handleImageUpload = async (event) => {
@@ -44,27 +49,27 @@ export default function AdminHome() {
     <div className="admin-home">
       <h2>Manage Home Page</h2>
 
-      {/* Image Upload & Preview */}
-      <div className="image-box">
-        <label>Upload Home Image:</label>
-        <input type="file" accept="image/*" onChange={handleImageUpload} />
-        {imagePreview && <img src={baseURL+imagePreview} alt="Preview" className="preview-img" />}
-      </div>
-      <br />
-      {/* About Text */}
-      <div className="about-section">
-        <label>About Text:</label>
-        <textarea
-          value={homeData.about}
-          onChange={(e) => setHomeData({ ...homeData, about: e.target.value })}
-          placeholder="Write about yourself..."
-          required
-        />
-      </div>
+      {loader ? <DotLoader /> : <> {/* Image Upload & Preview */}
+        <div className="image-box">
+          <label>Upload Home Image:</label>
+          <input type="file" accept="image/*" onChange={handleImageUpload} />
+          {imagePreview && <img src={baseURL + imagePreview} alt="Preview" className="preview-img" />}
+        </div>
+        <br />
+        {/* About Text */}
+        <div className="about-section">
+          <label>About Text:</label>
+          <textarea
+            value={homeData.about}
+            onChange={(e) => setHomeData({ ...homeData, about: e.target.value })}
+            placeholder="Write about yourself..."
+            required
+          />
+        </div>
 
-      <button onClick={handleUpdate} className="btn-save">
-        <FaSave /> Update Home
-      </button>
+        <button onClick={handleUpdate} className="btn-save">
+          <FaSave /> Update Home
+        </button></>}
     </div>
   );
 }

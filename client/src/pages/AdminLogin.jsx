@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../style/adminlogin.css"
 import axiosInstance from "../utils/axiosInstance";
+import DotLoader from "../utils/loader/DotLoader";
 
 export default function AdminLogin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -14,6 +16,7 @@ export default function AdminLogin() {
     setError("");
 
     try {
+      setLoading(true)
       const response = await axiosInstance.post("/admin/login", {
         email,
         password,
@@ -21,9 +24,10 @@ export default function AdminLogin() {
       sessionStorage.setItem("token", response.data.accessToken);
       // console.log(sessionStorage.getItem("token"))
       navigate("/admin/dashboard/stats");
-
+      setLoading(false)
     } catch (err) {
       setError("Invalid Credentials. Try Again!");
+      setLoading(false)
     }
   };
 
@@ -46,8 +50,9 @@ export default function AdminLogin() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button className="login_button" type="submit">Login</button>
+        <button className="login_button" disabled={loading} type="submit">{loading ? <DotLoader /> : "Login"}</button>
       </form>
+
     </div>
   );
 }

@@ -18,9 +18,8 @@ export default function Achievement() {
   useEffect(() => {
     setLoader(true)
     axiosInstance.get("/achievements")
-      .then((res) => setAchievements(res.data))
-      .catch(() => toast.error("Error fetching achievements!"));
-    setLoader(false)
+      .then((res) => {setAchievements(res.data);setLoader(false)})
+      .catch(() => {toast.error("Error fetching achievements!");setLoader(false)});
 
   }, []);
   return (

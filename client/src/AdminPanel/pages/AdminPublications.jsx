@@ -5,16 +5,20 @@ import "../style/adminpublications.css";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import axiosInstance from "../../utils/axiosInstance";
+import DotLoader from "../../utils/loader/DotLoader";
 
 export default function AdminPublications() {
   const [publications, setPublications] = useState([]);
   const [formData, setFormData] = useState({ title: "", authors: "", journal: "", link: "" });
   const [editId, setEditId] = useState(null);
+  const [loader, setLoader] = useState(false)
+
 
   useEffect(() => {
+    setLoader(true)
     axiosInstance.get("/publications")
-      .then((res) => setPublications(res.data))
-      .catch(() => toast.error("Error fetching publications!"));
+      .then((res) => { setPublications(res.data); setLoader(false) })
+      .catch(() => { toast.error("Error fetching publications!"); setLoader(false) });
   }, []);
 
   const handleSubmit = async (e) => {
@@ -94,7 +98,7 @@ export default function AdminPublications() {
       </form>
 
       {/* List of Publications */}
-      <ul>
+      {loader ? <DotLoader /> : <ul>
         {publications.map((item) => (
           <li key={item._id}>
             <h5><FaBookOpen className="icon" /> {item.title}</h5>
@@ -114,7 +118,7 @@ export default function AdminPublications() {
             </div>
           </li>
         ))}
-      </ul>
+      </ul>}
     </div>
   );
 }

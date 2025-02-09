@@ -30,9 +30,9 @@ export default function Academics() {
   useEffect(() => {
     setLoader(true)
     axiosInstance.get("/academics")
-      .then((res) => setAcademicData(res.data))
-      .catch(() => toast.error("Error fetching academics!"));
-    setLoader(false)
+      .then((res) => {setAcademicData(res.data); setLoader(false)})
+      .catch(() =>{ toast.error("Error fetching academics!");setLoader(false)});
+    
   }, []);
   return (
     <div className="academics-container">

@@ -12,8 +12,8 @@ export default function Home() {
     setLoader(true)
     axiosInstance.get("/home").then((res) => {
       setHomeData(res.data);
+      setLoader(false)
     });
-    setLoader(false)
 
   }, []);
   return (

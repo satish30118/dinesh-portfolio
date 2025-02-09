@@ -4,8 +4,11 @@ import { FaUsers, FaTrophy, FaBook, FaUsersCog, FaImages } from "react-icons/fa"
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
 import "../style/adminstats.css";
 import axiosInstance from "../../utils/axiosInstance";
+import DotLoader from "../../utils/loader/DotLoader";
 
 export default function AdminStats() {
+  const [loader, setLoader] = useState(false)
+
   const [stats, setStats] = useState({
     totalAcademics: 0,
     totalAchievements: 0,
@@ -15,10 +18,11 @@ export default function AdminStats() {
   });
 
   useEffect(() => {
+    setLoader(true)
     axiosInstance
       .get("/admin/stats")
-      .then((res) => setStats(res.data))
-      .catch(() => console.error("Error fetching stats"));
+      .then((res) => { setStats(res.data); setLoader(false); })
+      .catch(() => { console.error("Error fetching stats"); setLoader(false) });
   }, []);
 
   // Bar Chart Data
@@ -45,7 +49,7 @@ export default function AdminStats() {
     <div className="admin-stats">
       <h2>Admin Dashboard</h2>
 
-      <div className="stats-container">
+      {loader ? <DotLoader /> : <><div className="stats-container">
         <div className="stat-card"><FaUsersCog className="stat-icon" /><h3>{stats.totalAcademics}</h3><p>Academics</p></div>
         <div className="stat-card"><FaTrophy className="stat-icon" /><h3>{stats.totalAchievements}</h3><p>Achievements</p></div>
         <div className="stat-card"><FaBook className="stat-icon" /><h3>{stats.totalPublications}</h3><p>Publications</p></div>
@@ -53,36 +57,36 @@ export default function AdminStats() {
         <div className="stat-card"><FaImages className="stat-icon" /><h3>{stats.totalImages}</h3><p>Gallery Images</p></div>
       </div>
 
-      {/* Charts Section */}
-      <div className="charts-container">
-        {/* Bar Chart */}
-        <div className="chart">
-          <h3>Statistics Overview</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <BarChart data={barData}>
-              <XAxis dataKey="name" />
-              <YAxis />
-              <Tooltip />
-              <Bar dataKey="value" fill="#8884d8" barSize={50} />
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
+        {/* Charts Section */}
+        <div className="charts-container">
+          {/* Bar Chart */}
+          <div className="chart">
+            <h3>Statistics Overview</h3>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={barData}>
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Bar dataKey="value" fill="#8884d8" barSize={50} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
 
-        {/* Pie Chart */}
-        <div className="chart">
-          <h3>Data Distribution</h3>
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie data={pieData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100}>
-                {pieData.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                ))}
-              </Pie>
-              <Tooltip />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
-      </div>
+          {/* Pie Chart */}
+          <div className="chart">
+            <h3>Data Distribution</h3>
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie data={pieData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100}>
+                  {pieData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+        </div></>}
     </div>
   );
 }

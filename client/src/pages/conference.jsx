@@ -38,8 +38,8 @@ export default function Conference() {
   useEffect(() => {
     setLoader(true)
     axiosInstance.get("/conferences")
-      .then((res) => setConferences(res.data))
-      .catch(() => toast.error("Error fetching conferences!"));
+      .then((res) => {setConferences(res.data);setLoader(false)})
+      .catch(() => {toast.error("Error fetching conferences!");setLoader(false)});
     setLoader(false)
 
   }, []);

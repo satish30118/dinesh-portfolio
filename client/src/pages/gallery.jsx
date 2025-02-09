@@ -18,9 +18,8 @@ export default function Gallery() {
   useEffect(() => {
     setLoader(true)
     axiosInstance.get("/gallery")
-      .then((res) => setImages(res.data))
-      .catch(() => toast.error("Error fetching images!"));
-    setLoader(false)
+      .then((res) => {setImages(res.data);setLoader(false)})
+      .catch(() => {toast.error("Error fetching images!");setLoader(false)});
 
   }, []);
   return (

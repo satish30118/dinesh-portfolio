@@ -25,9 +25,8 @@ export default function Publication() {
   useEffect(() => {
     setLoader(true)
     axiosInstance.get("/publications")
-      .then((res) => setPublications(res.data))
-      .catch(() => toast.error("Error fetching publications!"));
-    setLoader(false)
+      .then((res) => {setPublications(res.data); setLoader(false)})
+      .catch(() => {toast.error("Error fetching publications!");setLoader(false)});
   }, []);
   return (
     <div className="publication-container">
