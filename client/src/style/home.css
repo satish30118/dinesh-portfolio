@@ -1,0 +1,123 @@
+/* General Styles */
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Section */
+.home-header {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.home-header h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 3rem;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.home-header img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Content Section */
+.home-content {
+    max-width: 1000px;
+    margin: 50px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+.image-box img {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1);
+}
+
+.text-box {
+    flex: 1;
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.6;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.text-box:hover {
+    transform: scale(1.02);
+}
+
+.text-box a {
+    color: #007bff;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.text-box a:hover {
+    color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .home-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .home-header img, .overlay {
+        height: 40vh;
+    }
+
+    .home-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .image-box img {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 500px) {
+    .home-header h1 {
+        font-size: 2rem;
+    }
+
+    .home-header img, .overlay {
+        height: 30vh;
+    }
+
+    .text-box {
+        padding: 15px;
+    }
+}

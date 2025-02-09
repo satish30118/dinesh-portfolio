@@ -1,0 +1,69 @@
+/* Center the content */
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    background: #f5f5f5;
+  }
+  
+  /* Big 404 Text */
+  .not-found-title {
+    font-size: 8rem;
+    font-weight: bold;
+    color: #ff6b6b;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    animation: float 2s infinite ease-in-out alternate;
+  }
+  
+  /* Page Not Found Message */
+  .not-found-text {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  /* Go Home Button */
+  .not-found-button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  
+  .not-found-button:hover {
+    background: #2980b9;
+  }
+  
+  /* Floating Animation for "404" */
+  @keyframes float {
+    0% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(10px);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .not-found-title {
+      font-size: 6rem;
+    }
+    
+    .not-found-text {
+      font-size: 1.2rem;
+    }
+  
+    .not-found-button {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+  }
+  

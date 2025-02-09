@@ -1,0 +1,116 @@
+/* General Styles */
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Section */
+.conference-header {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.conference-header h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2.8rem;
+    font-weight: 600;
+    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.conference-header img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Conference List */
+.conference-list {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.conference-item {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    border-left: 5px solid #063276;
+}
+
+.conference-item:hover {
+    transform: scale(1.02);
+}
+
+.conference-item h3 {
+    color: #063276;
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.conference-item p {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .conference-header h1 {
+        font-size: 2.3rem;
+    }
+
+    .conference-header img, .overlay {
+        height: 40vh;
+    }
+
+    .conference-item {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 500px) {
+    .conference-header h1 {
+        font-size: 2rem;
+    }
+
+    .conference-header img, .overlay {
+        height: 30vh;
+    }
+
+    .conference-item {
+        padding: 15px;
+    }
+
+    .conference-item h3 {
+        font-size: 1.3rem;
+    }
+
+    .conference-item p {
+        font-size: 0.95rem;
+    }
+}

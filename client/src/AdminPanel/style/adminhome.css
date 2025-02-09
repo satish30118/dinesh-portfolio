@@ -1,0 +1,97 @@
+.admin-home {
+  max-width: 1000px;
+  margin: 50px auto;
+  text-align: center;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .image-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .image-box {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  .upload-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  input[type="file"] {
+    flex: 1;
+    width: 100%;
+    padding: 5px;
+  }
+
+  .preview-img {
+    width: 100%;
+    max-width: 150px;
+    height: 150px;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  .about-section {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+
+  textarea {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .btn-upload {
+    background: #007bff;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .btn-upload:hover {
+    background: #0056b3;
+  }
+
+  .btn-save {
+    background: #28a745;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .btn-save:hover {
+    background: #218838;
+  }
+}

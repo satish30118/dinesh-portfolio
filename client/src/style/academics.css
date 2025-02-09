@@ -1,0 +1,125 @@
+/* General Styles */
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Section */
+.academics-header {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.academics-header h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2.8rem;
+    font-weight: 600;
+    z-index: 2;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.academics-header img {
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Academics List */
+.academics-list {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.academic-item {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    border-left: 5px solid #063276;
+}
+
+.academic-item:hover {
+    transform: scale(1.02);
+}
+
+.academic-item h3 {
+    color: #063276;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.academic-item p {
+    color: #333;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 5px 0;
+}
+
+.cgpa {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .academics-header h1 {
+        font-size: 2.3rem;
+    }
+
+    .academics-header img, .overlay {
+        height: 40vh;
+    }
+
+    .academic-item {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 500px) {
+    .academics-header h1 {
+        font-size: 2rem;
+    }
+
+    .academics-header img, .overlay {
+        height: 30vh;
+    }
+
+    .academic-item {
+        padding: 15px;
+    }
+
+    .academic-item h3 {
+        font-size: 1.3rem;
+    }
+
+    .academic-item p {
+        font-size: 0.95rem;
+    }
+}

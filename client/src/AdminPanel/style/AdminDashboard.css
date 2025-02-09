@@ -1,0 +1,29 @@
+/* Main Container */
+.admin-dashboard {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
+
+/* Sidebar (Fixed Position) */
+.admin-leftbar {
+  width: 250px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.admin-content {
+  flex-grow: 1;
+  padding: 20px;
+  width: calc(100% - 250px);
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+  .admin-leftbar{
+    width: 1px;
+  }
+  .admin-content{
+    width: 100%;
+  }
+}
+

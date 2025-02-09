@@ -1,0 +1,78 @@
+.admin-publications {
+    max-width: 800px;
+    margin: 50px auto;
+    text-align: center;
+
+
+    h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    h5 {
+        color: #0056b3;
+        font-weight: bold;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        padding: 10px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        background: white;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 5px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        text-wrap: wrap;
+    }
+
+    button {
+        margin: 5px;
+        padding: 6px 13px;
+    }
+
+    #btn-edit {
+        background-color: green;
+    }
+
+    #btn-edit:hover {
+        background-color: rgb(6, 92, 6);
+    }
+
+    #btn-delete {
+        background-color: rgb(220, 7, 7);
+    }
+
+    #btn-delete:hover {
+        background-color: rgb(155, 10, 10);
+    }
+}
