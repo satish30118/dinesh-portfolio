@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaEdit, FaTrash, FaCalendarAlt } from "react-icons/fa"; // Importing icons
-import "../style/adminconferences.css";
+import "../style/adminConferences.css";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import axiosInstance from "../../utils/axiosInstance";
