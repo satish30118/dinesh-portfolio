@@ -1,12 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./Components/Navbar";
-import Publication from "./pages/Publication";
-import Academics from "./pages/Academics";
-import Gallery from "./pages/Gallery";
-import Achievement from "./pages/Achievement"
-import Conference from "./pages/Conference";
-import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./AdminPanel/pages/AdminDashboard";
 import AdminHome from "./AdminPanel/pages/AdminHome";
 import AdminAcademics from "./AdminPanel/pages/AdminAcademics";
@@ -18,6 +12,12 @@ import AdminGallery from "./AdminPanel/pages/AdminGallery";
 import AdminProfile from "./AdminPanel/pages/AdminProfile";
 import AdminStats from "./AdminPanel/pages/AdminStats";
 import NotFound from "./utils/NotFound/NotFound";
+import Academics from "./pages/Academics";
+import Achievement from "./pages/Achievement";
+import Conference from "./pages/Conference";
+import Gallery from "./pages/Gallery";
+import Publication from "./pages/publication";
+import AdminLogin from "./pages/AdminLogin";
 
 function App() {
   return (
